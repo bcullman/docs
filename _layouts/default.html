@@ -3,47 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" media="screen" href="{% include pageroot.md %}static/css/manifest-hig-develop.css" >
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}jquery.min.js"></script>
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}hig-init.js"></script>
-        {% include favicon.html %}
-        <title>HIG: {{ page.title }}</title>
+        <title>CoreUI Docs: {{ page.title }}</title>
     </head>
     <body>
         <div id="body">
             {% include header.html url=page.url %}
             <div id="content">
-                {% include nav.html path=page.path nav=site.data.menu-develop %}
-                <div id="dimmer"></div>
-                <div id="main" class="fade {% if page.toc == true %}toc-enabled{% endif %}">
-                    <div class="container">
-                        {% include develop/components/nui-component-package.html path=page.url %}
-                        <h1>{{page.title}}</h1>
-                        {% if page.toc == true %}
-                            <div id="toc_nav">
-                                <h3>Contents</h3>
-                                {{ content | toc_only }}
-                            </div>
-                        {% endif %}
-                        {% include develop/components/nui-component-release.html release=page.release %}
-                        {% include develop/components/nui-component-breaking-change.html path=page.path breaking-change=page.breaking-change %}
-                        {% include develop/components/nui-component-deprecated.html path=page.path deprecated=page.deprecated %}
-                        {% include develop/components/import.md path=page.path title=page.title %}
-                        {{ content | indent: 10 }}
-                        {% include footer.html %}
-                    </div>
-                </div>
+                {{ content | toc_only }}
             </div>
         </div>
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}scrollReveal.js"></script>
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}scripts.js"></script>
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}hig.js" async="async"></script>
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}tooltip.js" async="async"></script>
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}clipboard.min.js"></script>
-        <script type="text/javascript" src="{% include pageroot.md %}{{site.path-scripts}}simple-jekyll-search.min.js"></script>
-        <script type="text/javascript">
-            hig.deferredFunctions.push( function() { hig.executeClipboardSetup(); } ); //Required to enable Copy Code links
-        </script>
         {% include search.html %}
     </body>
 </html>
