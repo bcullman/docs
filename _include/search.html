@@ -1,0 +1,26 @@
+<script>
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        searchResultTemplate: '{% include_cached search-results-template.html %}',
+        limit: 50,
+        json: '/pages/search.json',
+        noResultsText: '<li role="option"><span class="no-results">No results found</span></li>',
+        templateMiddleware: function (prop, value) {
+            var cls = '';
+            if (typeof value === 'undefined') {
+                value = '';
+            } else if (value.toUpperCase() === 'IOS') {
+                value = 'iOS';
+                cls = ' hig-breadcrumb-no-transform';
+            }
+            if (prop.indexOf('breadcrumb') !== -1 && value !== '') {
+                value = '<span class="hig-breadcrumb' + cls + '">' + value + '</span>';
+            }
+            return value;
+        },
+        sortMiddleware: function (a, b) {
+            return a.breadcrumb1.localeCompare(b.breadcrumb1);
+        }
+    })
+</script>
