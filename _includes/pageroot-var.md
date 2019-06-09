@@ -1,4 +1,4 @@
-{%- assign pageroot = "" -%}
+{%- assign pageroot = "docs/" -%}
 {%- assign pathArray = page.path | split: '/' -%}
 {%- for i in (2..pathArray.size) -%}
     {%- assign pageroot = pageroot | append: "../" -%}
