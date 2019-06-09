@@ -9,9 +9,8 @@
     <body>
         <div id="body">
             {% include header.html url=page.url %}
-            <div id="content">
-                {{ content | toc_only }}
-            </div>
+            {% include sidebar.html url=page.url %}
+            <div id="content">{{ content | toc_only }}</div>
         </div>
     </body>
 </html>
