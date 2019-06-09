@@ -11,13 +11,13 @@
     </head>
     <body>
         <div id="body">
-            {% include_cached header.html url=page.url %}
+            {% include header.html url=page.url %}
             <div id="content">
-                {% include_cached nav.html path=page.path nav=site.data.menu-develop %}
+                {% include nav.html path=page.path nav=site.data.menu-develop %}
                 <div id="dimmer"></div>
                 <div id="main" class="fade {% if page.toc == true %}toc-enabled{% endif %}">
                     <div class="container">
-                        {% include_cached develop/components/nui-component-package.html path=page.url %}
+                        {% include develop/components/nui-component-package.html path=page.url %}
                         <h1>{{page.title}}</h1>
                         {% if page.toc == true %}
                             <div id="toc_nav">
@@ -25,12 +25,12 @@
                                 {{ content | toc_only }}
                             </div>
                         {% endif %}
-                        {% include_cached develop/components/nui-component-release.html release=page.release %}
-                        {% include_cached develop/components/nui-component-breaking-change.html path=page.path breaking-change=page.breaking-change %}
-                        {% include_cached develop/components/nui-component-deprecated.html path=page.path deprecated=page.deprecated %}
-                        {% include_cached develop/components/import.md path=page.path title=page.title %}
+                        {% include develop/components/nui-component-release.html release=page.release %}
+                        {% include develop/components/nui-component-breaking-change.html path=page.path breaking-change=page.breaking-change %}
+                        {% include develop/components/nui-component-deprecated.html path=page.path deprecated=page.deprecated %}
+                        {% include develop/components/import.md path=page.path title=page.title %}
                         {{ content | indent: 10 }}
-                        {% include_cached footer.html %}
+                        {% include footer.html %}
                     </div>
                 </div>
             </div>
@@ -44,6 +44,6 @@
         <script type="text/javascript">
             hig.deferredFunctions.push( function() { hig.executeClipboardSetup(); } ); //Required to enable Copy Code links
         </script>
-        {% include_cached search.html %}
+        {% include search.html %}
     </body>
 </html>
